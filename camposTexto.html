@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulario, campos de texto</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#caja{
+			width: 500px;
+			height: 500px;
+			float: right;
+			border: 1px solid black;
+			font-family: Arial;
+		}
+	</style>
+	<script type="text/javascript">
+		function escribe(){
+			escribir = document.getElementById("caja");
+
+			miTitulo = document.datos.titulo.value;
+			miClave = document.datos.clave.value;
+			miTexto = document.datos.texto.value;
+
+			escribir.innerHTML = "<h1>" + miTitulo + "</h1>" + "<h3>" + miClave + "</h3>" + "<p>" + miTexto + "</p>";
+		}
+		
+		window.onload = function (){
+			document.datos.ver.onclick = escribe; 
+		}
+	</script>
+
+</head>
+<body>
+	<h1>Acceso a campos de texto</h1>
+	<p><h2>Escribe tu texto:</h2></p>
+	<div id="caja"></div>
+	<form name="datos">
+		<p>Escribe el título: <input type="text" name="titulo"></p>
+		<p>Escribe tu clave: <input type="password" name="clave"></p>
+		<p>Escribe el texto</p>
+		<p><textarea name="texto"></textarea></p>
+		<p><input type="button" name="ver" value="ver"></p>
+	</form>
+
+	
+</body>
+</html>

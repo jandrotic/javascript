@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Propiedades de la pagina</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#caja{
+			width: 400px;
+			height: 200px;
+			border: 1px black solid;
+			float: right;
+		}
+		#parrafos{
+			font-size: 1em;
+			font-family: arial;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		function amarillo(){
+			document.bgColor = "yellow";
+		}
+
+		function blanco(){
+			document.bgColor = "white";
+		}
+
+		function azul(){
+			document.fgColor = "blue";
+		}
+
+		function negro(){
+			document.fgColor = "black";
+		}
+
+		function dominio(){
+			var caja = document.getElementById('caja');
+
+			caja.innerHTML = location;
+		}
+
+		function titulo(){
+			var caja = document.getElementById('caja');
+			caja.innerHTML = document.title;
+		}
+
+		function cambiar(){
+			var caja = document.getElementById('caja');
+			var nuevoTitulo = "Titulo cambiado";
+			document.title = nuevoTitulo;
+			caja.innerHTML = "Nuevo titulo = " + nuevoTitulo;
+		}
+
+		function fecha(){
+			var caja = document.getElementById('caja');
+			caja.innerHTML = document.lastModified;
+		}
+
+		function navegador(){
+			var caja = document.getElementById('caja');
+			caja.innerHTML = navigator.userAgent;
+		}
+
+		function resolucion(){
+			var caja = document.getElementById('caja');
+			var ancho = screen.width;
+			var alto = screen.height;
+			caja.innerHTML = ancho + "x" + alto + "px";
+		}
+	</script>
+</head>
+<body>
+	<div id="caja"></div>
+	<div>
+		<h1>Propiedades de la pagina. Entre guiones va escrita la propiedad usada
+			<p>Pulsa para:</p>
+		</h1>
+	</div>
+	<div id="parrafos">
+		<p onclick="amarillo()">Color de fondo amarillo - document.bgColor -</p>
+		<p onclick="blanco()">Volver a color de fondo blanco - document.bgColor -</p>
+		<p onclick="azul()">Color de texto azul - document.fgColor -</p>
+		<p onclick="negro()">Volver a color de texto negro - document.fgColor</p>
+		<p onclick="dominio()">Ver el dominio de la página - location -</p>
+		<p onclick="titulo()">Ver el título de la página - document.title -</p>
+		<p onclick="cambiar()">Cambiar el título de la página - document.title -</p>
+		<p onclick="fecha()">Fecha de la última modificación - document.lastModified -</p>
+		<p onclick="navegador()">Navegador - navigator.userAgent</p>
+		<p onclick="resolucion()">Resolución - screen.width - screen.height -</p>
+	</div>
+
+
+</body>
+</html>

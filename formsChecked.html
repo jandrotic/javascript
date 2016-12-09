@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chequear formularios</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#titulo{
+			font-family: Arial, serif;
+			text-shadow: 5px 2px 4px grey;
+		}
+		#caja{
+			width: 300px;
+			height: 300px;
+			float: left;
+			border: 1px solid black;
+		}
+		#caja2{
+			width: 300px;
+			height: 300px;
+			float: left;
+			border: 1px solid black;
+		}
+	</style>
+
+	<script type="text/javascript">
+		function infoChecked(){
+			
+			var pulsado = document.elegir.color;
+		
+
+			for (var i = 0; i < pulsado.length; i++) {      
+				var valor = pulsado[i].checked;
+					if (valor == true){
+						var elegido = pulsado[i].value;
+					}      					
+			}
+			escribir = document.getElementById("caja");
+			escribir.innerHTML = "<h1>" + elegido + "</h1>";
+		}
+
+		function infoCheckbox(){
+			var escribir = document.getElementById("caja2");
+			escribir.innerHTML = "<h3>Temas seleccionados: </h3>"
+
+			if (document.elegir.deportes.checked == true){
+				deportes = document.elegir.deportes.value;
+			}else{
+				deportes = "";
+			}
+			if(document.elegir.cultura.checked == true){
+				cultura = document.elegir.cultura.value;
+			}else{
+				cultura = "";
+			}
+			if(document.elegir.noticias.checked == true){
+				noticias = document.elegir.noticias.value;
+			}else{
+				noticias = "";
+			}
+			escribir.innerHTML += deportes + cultura +  noticias; 
+
+		}
+
+		window.onload = function(){
+			document.elegir.ver.onclick = infoChecked;
+			document.elegir.verTemas.onclick = infoCheckbox;
+		}
+	</script>
+</head>
+<body>
+	<h1 id="titulo">Selecciona un color:</h1>
+	<form name="elegir">
+			<input type="radio" value="red" name="color">rojo<br/>
+			<input type="radio" value="blue" name="color">blue<br/>
+			<input type="radio" value="yellow" name="color">amarillo<br/>
+			<input type="radio" value="negro" name="color">negro<br/>
+			<input type="button" value="Color Elegido" name="ver"><br/>
+
+			<input type="checkbox" value="deportes" name="deportes">
+				<label for="deportes">Deportes</label><br/>
+			<input type="checkbox" value="cultura" name="cultura">
+				<label for="cultura">Cultura</label><br/>
+			<input type="checkbox" value="noticias" name="noticias">
+				<label for="noticias">Noticias</label><br/>
+			<input type="button" value="Ver Temas" name="verTemas">
+
+	</form>
+	<p></p>
+	<div id="caja"></div>
+	<div id="caja2"></div>
+</body>
+</html>

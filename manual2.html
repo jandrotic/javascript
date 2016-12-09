@@ -1,0 +1,208 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+	<title>2º parte del Manual de Javascript</title>
+</head>
+<body>
+
+	<p>FUNCION EVAL</p>
+
+	Recibe cadena de caracteres y lo ejecuta como si fuera una sentencia javascript<br>
+
+	<script type="text/javascript">
+		var miTexto = "2 + 5";
+		eval("document.write(" + miTexto +")");
+	</script>
+
+	<p>FUNCION parseInt</p>
+
+	Recibe una cadena y una base (2, 8, 10, 16), devuelve valor numérico <br>
+	<script type="text/javascript">
+		document.write(parseInt("34") + "<br>");
+		document.write(parseInt("101011", 2) + "<br>");
+		document.write(parseInt("3F", 16) + "<br>");
+		document.write(parseInt("3.38") + "<br>");
+		document.write(parseInt("Alejandro Alvarez") + "<br>");
+		document.write(parseInt("16xxeU"));
+	</script>
+
+	<p>FUNCION isNaN</p>
+
+	<script type="text/javascript">
+		var miInteger = parseInt("A3.6");
+		isNaN(miInteger);
+
+		document.write(miInteger + "Como no se puede convertir a entero, devuelve Nan, true" + "<br>");
+
+		var miFloat = parseFloat("3.45");
+		isNaN(miFloat);
+
+		document.write(miFloat + "Como si devuelve un numero y se convierte perfectamente isNaN devuelve False");
+	</script>
+
+	<p>En este ejercicio vamos a realizar un script que procure obtener un número entero del valor que haya escrito el usuario en un campo de texto. Si es un entero o puede convertirlo a un entero, coloca dicho valor entero en el campo. Si no puede obtener un valor numérico entero borra el contenido del campo y lo deja vacío</p>
+
+	<script type="text/javascript">
+		function validarEntero(valor){
+			//Intentamos convertir a entero
+			var valor = parseInt(valor);
+			//Comprobamos si es un valor numérico
+			if (isNaN(valor)){
+				//No es nunmero, devuelvo cadena vacía
+				return;
+			}else{
+				//En caso contrario, es número, devuelvo el valor
+				return valor;
+			}
+		}
+
+		function validarFormulario(){
+			//Extraemos el valor del campo de texto
+			textoCampo = window.document.formulario.texto.value;
+			//Validamos como entero
+			textoCampo = validarEntero(textoCampo);
+			//Colocamos en valor de nuevo en el campo texto
+			window.document.formulario.texto.value = textoCampo;
+		}
+	</script>
+
+	<form name="formulario">
+		<input type="text" name="texto"/>
+		<input type="button" value="validar" onclick=validarFormulario()>
+	</form>
+
+	<p>Ejemplo de String y sus métodos</p>
+
+	<script type="text/javascript">
+			var miCadena = "Hola a todos";
+			var resultado = "";
+
+			for (i=0;i<miCadena.length;i++){
+				resultado=resultado + miCadena.charAt(i);
+				resultado=resultado + "-";				
+			}
+			document.write(resultado);
+	</script>
+
+	<p>Ejemplo de Date</p>
+
+	<script type="text/javascript">
+		var fechaActual = new Date();
+		var fechaPaula = new Date(2016, 02, 23);
+
+		//Imprimimos las fechas
+		document.write("Fecha Actual: " + fechaActual + "<br>");
+		document.write("Fecha nacimiento Paula: " + fechaPaula + "<br>");
+
+		//Extraemos los años de las fechas
+		anoActual = fechaActual.getFullYear();
+		anoPaula = fechaPaula.getFullYear();
+
+		//Escribimos los años en la web
+		document.write("Año actual: " + anoActual + "<br>");
+		document.write("Año Paula: " + anoPaula + "<br>");
+
+		//Actualizar año de una de las fechas
+		fechaActual.setFullYear(2005);
+
+		//Extraer día, mes y año
+		dia = fechaActual.getDate();
+		mes = parseInt(fechaActual.getMonth()) + 1;
+		ano = fechaActual.getFullYear();
+
+		document.write (dia + "/" + mes + "/" + ano);
+	</script>
+
+	<p>VAMOS A CREAR NUESTRAS PROPIAS CLASES. POO.</p>
+
+	<script type="text/javascript">
+		//Constructor para la Clase estudiante universitario
+		function AlumnoUniversitario(nombre, edad){
+			//Añadimos las propiedades, numMatricula=null pq hasta que no se matricule no tiene numero
+			this.nombre = nombre;
+			this.edad = edad;
+			this.numMatricula = null;
+			//Añadimos los métodos
+			this.matriculate = matriculate;
+			this.imprimete = imprimete;
+		}
+		//Metodo matriculate
+		function matriculate(num_matricula){
+			this.numMatricula = num_matricula;
+		}
+		//Método imprimete
+		function imprimete(){
+			document.write("<br>Nombre: " + this.nombre);
+			document.write("<br>Edad: " + this.edad);
+			document.write("<br>Número de matrícula: " + this.numMatricula);
+		}
+
+		//Instanciar un Objeto
+		//Creamos alumno
+		miAlumno = new AlumnoUniversitario("Alejandro Alvarez", 35);
+		//Imprime alumno
+		miAlumno.imprimete();
+		//Que se matricule
+		miAlumno.matriculate(666);
+		//Que se imprima de nuevo
+		miAlumno.imprimete();
+	</script>
+
+	<p>ALGUNA PROPIEDAD DE DOCUMENT</p>
+
+	<script type="text/javascript">
+		function cambiaColor(color){
+			document.bgColor = color;
+		};
+	</script>
+
+		<form>
+		<input type="Button" value="Rojo" onclick="cambiaColor('ff0000')"> <br>
+		<input type="Button" value="Verde" onclick="cambiaColor('00ff00')"> <br>
+		<input type="Button" value="Azul" onclick="cambiaColor('0000ff')"> <br>
+		</form>
+
+	
+	<script type="text/javascript">
+	//Ver titulo de la web
+	//	window.alert(document.title);
+	//Funcion que cambia el titulo según los botones de más abajo
+		function cambiaTitulo(titulo){
+			document.title = titulo;
+		};
+
+	</script>
+	
+		<form>
+			<input type="Button" value="Titulo = Hola a todos" onclick="cambiaTitulo('Hola a todos')"> <br>
+			<input type="Button" value="Titulo = Segunda parte de Javascript" onclick="cambiaTitulo('Segunda parte de Javascript')"><br>
+		</form>
+
+	<p>CALCULADORA PARA PRACTICAR COMO ACCEDER A LOS FORMULARIOS CON JS</p>
+
+	<form name="calculadora">
+		<input type="text" name="ope1" value="0" size="12">
+		<input type="text" name="ope2" value="0" size="12">
+		
+		<input type="Button" value="+" name="suma" onclick="calcula('+')">
+		<input type="button" value="-" name="resta" onclick="calcula('-')">
+		<input type="button" value="X" name="multiplicar" onclick="calcula('*')"> 
+		<input type="button" value="/" name="dividir" onclick="calcula('/')">
+
+		<input type="text" name="res" value="0"><br><br>
+	</form>
+
+	<script type="text/javascript">
+		function calcula(operacion){
+			var ope1 = document.calculadora.ope1.value;
+			var ope2 = document.calculadora.ope2.value;
+			var result = eval(ope1 + operacion + ope2);
+			
+			document.calculadora.res.value = result;
+		}
+	</script>
+	
+
+
+</body>
+</html>

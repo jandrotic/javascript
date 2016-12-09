@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Primeros pasos con Javascript</title>
+	</head>
+
+	<body>
+		Para ejecutar javascript en el fichero de html utilizamos:
+
+		<p>
+
+		&ltscript type="text/javascript"&gt
+
+		&lt/script&gt
+
+		<p>Para ejecutar javascript en un fichero externo escribimos:</p>
+		<p>&ltscript type="text/javascript" src="archivo_externo.js"&gt&lt/script&gt</p>
+		<p>"//" Comentario de una linea</p>
+		<p>"/* Comentario de varias lineas */"</p>
+		<p>VARIABLES</p>
+		var sumando1 = 4; <br>
+		var sumando2 = 3; <br>
+		var suma; <br>
+		suma = sumando1 + sumando2; <br>
+		<p>VARIABLE GLOBALES Y LOCALES</p>
+
+		En cualquier lugar de la página la variable que tiene validez es la Global menos en el ámbito de la variable local que es ésta la que tiene validez.
+
+		<p>&ltscript&gt <br>
+			var variableGlobal;<br>
+		&lt/script&gt </p><br>
+
+		<p>&ltscript&gt<br>
+			function miFuncion (){ <br>
+				var variableLocal; <br>
+			}; <br>
+		&lt/script&gt</p> <br>
+
+		<p>En la medida de lo posible y cómo consejo: No utilizar el mismo nombre de variable para variables globales y variable locales.</p>
+
+		<p>&ltscript&gt <br> 
+		var num = 2; <br>
+		function miFuncion (){ <br>
+		&nbsp;var num = 10; <br>
+		&nbsp;document.write(num); // Imprime 10. <br>
+		} <br>
+
+		document.write(num); // Imprime 2. <br>
+		&lt/script&gt</p>
+
+		<p>Sino utilizamos la palabra var para declarar variables se trataran como variables globales aunque estén en un ambito local, por tanto se corre el riesgo de sobreescribir el valor de la variable global.</p>
+
+		var num = 2; <br>
+		function miFuncion (){<br>
+		&nbsp;num = 10;<br>
+		&nbsp;document.write(num); // Imprime 10;<br>
+		}<br>
+		document.write(num); // Imprime 2<br>
+		//Llamamos a la funcion<br>
+		miFuncion();<br>
+		document.write(num); // Imprime 10;<br>
+
+		<p>DISTINTOS TIPOS DE VARIABLES</p>
+		&ltscript&gt<br>
+		var boleano = true;<br> 
+		var numerico = 2;<br>
+		var numerico_flotante = 2.5;<br>
+		var texto = "Hola Alejandro";<br>
+		var objeto = new Date();<br>
+
+		document.write("<br>El tipo de boleano es: " + typeof boleano);<br>
+		document.write("<br>El tipo de numerico es: " + typeof numerico);<br>
+		document.write("<br>El tipo de numerico_flotante es: " + typeof numerico_flotante);<br>
+		document.write("<br>El tipo de texto es: " + typeof texto);<br>
+		document.write("<br>El tipo de objeto es: " + typeof objeto);<br>
+		&lt/script&gt<br>
+
+		<p>ESTRUCTURAS DE CONTROL</p>
+
+		<P>IF</P>
+
+		if (expresion){<br>
+		 &nbsp;// Acciones a realizar en caso positivo<br>
+		}else{<br>
+		 &nbsp;// Acciones a realizar en caso negativo<br>
+		}<br>
+
+		<p>SWITCH</p>
+
+		switch (expresion){<br>
+			case valor1:<br>
+			&nbsp;Sentencias si la expresión tiene como valor valor1<br>
+			&nbsp;break<br>
+			case valor2:<br>
+			&nbsp;Sentencias si la expresión tiene como valor valor2<br>
+			&nbsp;break<br>
+			case valor3:<br>
+			&nbsp;Sentencias si la expresión tiene como valor valor3<br>
+			&nbsp;break<br>
+			default:<br>
+			&nbsp;Sentencia a ejecutar si el valor no es ninguno de los anteriores<br>
+		}<br>
+
+		<p>FOR</p>
+
+		for(inicializacion; condicion; actualizacion){
+		&nbsp;// Sentencias a ejecutar en cada iteración
+		}
+
+		<script type="text/javascript">
+
+		for (i=1;i<=6;i++){
+			document.write("<H" + i + ">Encabezado de nivel " + i + "</H" + i + ">" );
+		}
+
+		</script>
+
+		<p>WHILE Y DO WHILE</p>
+
+		while (condicion){ <br>
+		&nbsp;// sentencia a ejecutar<br>
+		}<br>
+
+		do{<br>
+		&nbsp;// sentencias del bucle<br>
+		}while (condicion)<br>
+
+		<p>FUNCIONES</p>
+
+		function nombreFuncion (){ <br>
+		&nbsp;// Instrucciones de la función <br>
+		} <br>
+
+		nombreFuncion(); <br>
+
+		<p>Las funciones las colocaremos siempre en el HEAD para poder llamarlas desde el BODY</p>
+
+		<P>PARAMETROS EN LAS FUNCIONES</P>
+
+		function escribirBienvenida (nombre){ <br>
+		&nbsp; document.write("Hola" + nombre); <br>
+		}<br>
+		<br>
+
+		escribirBienvenida ("Alejandro Alvarez"); <br>
+
+		<p>Pasar Varios Parámetros</p>
+
+		function escribirBienvenida (nombre, colorTexto){<br>
+		&nbsp;document.write("<font color="" + colorTexto + "">");<br>
+		&nbsp;document.write("<H1>Hola" + nombre + "</H1>");<br>
+		&nbsp;document.write("</font>");<br>
+		}<br>
+
+
+		var miNombre = "Alejandro"; <br>
+		var color = "red";<br>
+
+		escribirBienvenida (miNombre, color);<br>
+
+		<p>Return</p>
+
+		function media (num1, num2){ <br>
+		var resultado;<br>
+		&nbsp; resultado = (num1 + num2)/2;<br>
+		return resultado<br>
+		}<br>
+
+		var miMedia;<br>
+		miMedia = media (2, 5);<br>
+		document.write (miMedia);<br>
+
+		<p>ARRAYS</p>
+
+		var miArray = new Array(3);<br><br>
+
+		miArray[0] = 2;<br>
+		miArray[1] = 45;<br>
+		miArray[3] = 22;<br><br>
+
+		for (i=0;i<3;i++)<br>
+			document.write("Para la posición: " + i + "el array: " + miArray[i]);<br>
+			document.write("<br>");<br>
+		}<br><br>
+
+		var arrayRapido = [12, 3, "array inicializado en su declaración"]; <br><br>
+
+		
+		Array con dos posiciones, intro en la posición 5 otro valor y lo recorremos con la propiedad .length: <br><br>
+
+		<script type="text/javascript">
+
+		var miArray = new Array();
+
+		miArray[0] = 3;
+		miArray[1] = 43;
+
+		miArray[5] = "hola";
+
+		for (i=0;i<miArray.length;i++){
+			document.write("posición: " + i + "del Array: " + miArray[i] + "<br>");
+		}
+
+		</script>
+
+		<p>ARRAYS MULTIDIMENSIONALES</p>
+
+
+		<script type="text/javascript">
+
+		var temperaturas_medias_ciudad0 = new Array(3);
+
+		temperaturas_medias_ciudad0[0] = 32;
+		temperaturas_medias_ciudad0[1] = 23;
+		temperaturas_medias_ciudad0[2] = 41;
+
+		var temperaturas_medias_ciudad1 = new Array(3);
+
+		temperaturas_medias_ciudad1[0] = 5;
+		temperaturas_medias_ciudad1[1] = 22;
+		temperaturas_medias_ciudad1[2] = 13;
+
+		var temperaturas_medias_ciudad2 = new Array(3);
+
+		temperaturas_medias_ciudad2[0] = 12;
+		temperaturas_medias_ciudad2[1] = 11;
+		temperaturas_medias_ciudad2[2] = 24;
+
+		var temperaturas_ciudades = new Array(3);
+
+		temperaturas_ciudades[0] = temperaturas_medias_ciudad0;
+		temperaturas_ciudades[1] = temperaturas_medias_ciudad1;
+		temperaturas_ciudades[2] = temperaturas_medias_ciudad2;
+
+		document.write("<table width=200 border=1 cellpading=1 cellspacing=1>");
+		for (i=0;i<temperaturas_ciudades.length;i++){
+			document.write("<tr>");
+			document.write("<td><b>Ciudad: " + i + "</b></td>");
+			for (j=0;j<temperaturas_ciudades.length;j++){
+				document.write("<td>" + temperaturas_ciudades[i][j] + "</td>")
+			}
+			document.write("<tr>");
+		}
+		document.write("</table>")
+ 
+		</script>
+
+
+
+
+		</p>
+	</body>
+</html> 

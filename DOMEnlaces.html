@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM Enlaces</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	#cuadro  { 
+		width: 400px; 
+		height: 200px; 
+		border: 1px black solid; 
+        float: right; 
+        font-family: arial; 
+    }
+	</style>
+
+	<script type="text/javascript">
+		
+
+		function verDirecciones(){
+			var enlaces = document.links;
+			var texto = "";
+			var caja = document.getElementById('cuadro');
+
+			for (var i = 0; i < enlaces.length; i++) {
+				texto  = texto + enlaces[i].href + "<br/>";
+			}
+			caja.innerHTML = texto;
+		}
+
+		function verTexto(){
+			var textoEnlaces = document.links;
+			var texto = "";
+			var caja = document.getElementById('cuadro');
+
+			for (var i = 0; i < textoEnlaces.length; i++) {
+				texto = texto + textoEnlaces[i].innerHTML + "<br/>";
+			}
+			caja.innerHTML = texto;
+		}
+
+		function cambiar(){
+			document.links[3].href = "http://www.youtube.es";
+			document.links[3].innerHTML = "Youtube";
+		}
+	</script>
+</head>
+<body>
+	<h1>Acceso a los enlaces</h1>
+	<h2>Enlace a varias páginas</h2>
+
+	<div id="cuadro"></div>
+	<p>
+		<a href="http://www.google.es">Google</a>
+	</p>
+	<p>
+		<a href="http://www.yahoo.es">Yahoo</a>
+	</p>
+	<p>
+		<a href="http://www.msn.com">MSN</a>
+	</p>
+	<p>
+		<a href="http://www.altavista.es">Altavista</a>
+	</p>
+	<p onclick="verDirecciones()">
+		Ver direcciones URL
+	</p>
+	<p onclick="verTexto()">
+		Ver Texto de Enlace
+	</p>
+	<p onclick="cambiar()">
+		Cambiar cuarto enlace a Youtube
+	</p>
+
+</body>
+</html>
